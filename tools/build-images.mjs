@@ -15,7 +15,7 @@ mkdirSync(outDir, { recursive: true });
 
 // nom, ratio (w/h), largeurs, libelle du placeholder, teinte
 const SPECS = [
-  { name: 'hero-facade', ratio: 16 / 10, widths: [960, 1600], label: 'Photo du hero (facade haussmannienne) a inserer', hue: 'warm' },
+  { name: 'hero-facade', ratio: 1887 / 814, widths: [960, 1600], label: 'Photo du hero (facade haussmannienne) a inserer', hue: 'warm' },
   { name: 'hero-facade-mobile', ratio: 3 / 4, widths: [480, 800], label: 'Photo du hero, recadrage mobile', hue: 'warm' },
   // Dessins de profils sur fond blanc (site actuel) : on les inscrit dans le cadre sans recadrer.
   { name: 'gamme-modenature', ratio: 4 / 3, widths: [480, 960], label: 'Visuel Decoprofil Modenature a inserer', hue: 'stone', fit: 'contain' },
@@ -66,7 +66,7 @@ for (const spec of SPECS) {
     if (src) {
       img = spec.fit === 'contain'
         ? sharp(src).flatten({ background: '#ffffff' }).resize(w, h, { fit: 'contain', background: '#ffffff', kernel: 'lanczos3' })
-        : sharp(src).resize(w, h, { fit: 'cover', position: 'attention' });
+        : sharp(src).resize(w, h, { fit: 'cover', position: 'centre' });
     } else {
       img = sharp(Buffer.from(placeholderSvg(w, h, spec.label, spec.hue)));
     }

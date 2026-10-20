@@ -16,7 +16,7 @@ Maquette statique de la page d'accueil de [decoparis.net](https://decoparis.net)
 
 ## Remplacer les visuels de substitution par les photos du site
 
-L'environnement de création n'avait pas accès à decoparis.net. Le logo et les trois dessins de profils des gammes ont été extraits d'une capture d'écran du site (`images/src/`) ; les autres visuels (hero, chantiers, image Open Graph) sont des dégradés brun / taupe générés automatiquement, avec un libellé indiquant la photo attendue. Pour les remplacer :
+L'environnement de création n'avait pas accès à decoparis.net. Le logo, les trois dessins de profils des gammes et la photo de façade du hero ont été extraits de captures d'écran du site (`images/src/`). Le hero a été retouché pour effacer le slogan et le menu incrustés dans la capture : pour un résultat parfait, remplacez `images/src/hero-facade.png` par le fichier original du site (le pipeline refait les recadrages). Les photos de chantiers sont des dégradés brun / taupe générés automatiquement, avec un libellé indiquant la photo attendue. Pour les remplacer :
 
 1. Téléchargez les photos du site (hero, 3 gammes, 3 chantiers, image Open Graph) et renommez-les ainsi dans `images/src/` : `hero-facade.jpg`, `hero-facade-mobile.jpg` (recadrage vertical), `gamme-modenature.jpg`, `gamme-coffrage.jpg`, `gamme-interieur.jpg`, `chantier-1.jpg`, `chantier-2.jpg`, `chantier-3.jpg`, `og-image.jpg`. Les formats PNG et WebP sont aussi acceptés.
 2. Lancez le pipeline :
