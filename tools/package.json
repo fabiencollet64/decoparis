@@ -1,0 +1,8 @@
+{
+  "name": "decoparis-maquette-tools",
+  "private": true,
+  "type": "module",
+  "description": "Pipeline d'images de la maquette DecoParis (AVIF / WebP / JPEG).",
+  "scripts": { "images": "node build-images.mjs" },
+  "devDependencies": { "sharp": "^0.34.0" }
+}
