@@ -48,6 +48,15 @@ Lighthouse (mode mobile) peut être lancé avec `npx lighthouse http://127.0.0.1
 
 La balise `<link rel="canonical">` pointe vers `https://decoparis.net/` afin de protéger le vrai site du contenu dupliqué.
 
-## Points à confirmer avec le client
+## Points à valider avec le client
 
-Tous les éléments non vérifiables sont marqués `[À CONFIRMER]`, `[CHANTIER À COMPLÉTER]` ou `[TÉMOIGNAGE CLIENT RÉEL À FOURNIR]` dans la page. La liste complète est fournie dans le compte rendu de livraison.
+La page ne porte plus de marqueur « à confirmer » afin de rester présentable. Les informations suivantes n'ont pas pu être vérifiées et doivent être validées avant toute mise en production :
+
+- Adresse du showroom de Creil : 111 rue du Bois des Cerisiers est retenue partout ; le site actuel affiche aussi 83 rue Robert Schuman.
+- Adresse des bureaux : 112 avenue Paul Vaillant-Couturier, 93150 Le Blanc-Mesnil.
+- Téléphone et email : absents de la maquette, à ajouter dans le pied de page et dans le JSON-LD (`contactPoint`, `LocalBusiness`).
+- Matériaux et caractéristiques : PSE et coque de résine pour Decoprofil Modénature, Avis Technique CSTB ; usage et matériau de Decoprofil Coffrage ; gamme et matériau de Moulurama Intérieur.
+- Méthode : relevé sur place, validation du profil avant fabrication, délais et conditions de livraison.
+- URL du compte Pinterest.
+- Police et couleurs : Poppins, brun `#55443f`, beige `#f0e9e0`, à rapprocher des réglages Elementor du site.
+- Emplacements encore en attente dans la page : logos clients supplémentaires, trois chantiers types, trois témoignages.
