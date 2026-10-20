@@ -75,6 +75,16 @@ a{color:inherit}
 .btn--ink:hover,.btn--ink:focus-visible{background:var(--c-bark);border-color:var(--c-bark)}
 :focus-visible{outline:3px solid #b08968;outline-offset:3px}
 
+/* Motifs de moulures (SVG inline et CSS pur, aucun fichier supplémentaire) */
+.ornament{display:block;width:168px;height:30px;margin:-.2rem 0 1.4rem;color:var(--c-taupe)}
+.section--dark .ornament{color:var(--c-sand)}
+.ornament--center{margin-inline:auto}
+.section--dark,.footer{position:relative}
+.section--dark::before,.footer::before{content:"";position:absolute;left:0;right:0;top:0;height:14px;background:repeating-linear-gradient(90deg,rgba(255,255,255,.2) 0 12px,transparent 12px 22px) top/100% 9px no-repeat,linear-gradient(rgba(255,255,255,.3),rgba(255,255,255,.3)) 0 11px/100% 1px no-repeat}
+.section--cream{background-image:linear-gradient(var(--c-sand) 0 1px,transparent 1px 7px,var(--c-sand) 7px 8px,transparent 8px),linear-gradient(var(--c-sand) 0 1px,transparent 1px 7px,var(--c-sand) 7px 8px,transparent 8px);background-size:100% 8px,100% 8px;background-position:top,bottom;background-repeat:no-repeat}
+.frame{position:relative}
+.frame::after{content:"";position:absolute;inset:7px;border:1px solid currentColor;opacity:.25;pointer-events:none}
+
 /* En-tête */
 .header{position:absolute;inset:0 0 auto 0;z-index:20;padding:1rem 0}
 .header__bar{display:flex;align-items:center;justify-content:space-between;gap:1rem}
@@ -142,7 +152,7 @@ a{color:inherit}
 .card__body p{color:var(--c-muted);flex:1}
 .card__link{display:block;text-align:center;font-weight:600;text-transform:uppercase;letter-spacing:.14em;font-size:.78rem;text-decoration:none;background:var(--c-cream);color:var(--c-ink);padding:.9rem 1rem;min-height:48px;border-radius:var(--radius)}
 .card__link:hover,.card__link:focus-visible{background:#e4d9cb}
-.tile{padding:1.8rem;border-top:2px solid var(--c-taupe);background:var(--c-cream)}
+.tile{padding:2rem;border-top:2px solid var(--c-taupe);background:var(--c-white)}
 .tile p{color:var(--c-muted);margin:0}
 .section--dark .tile{background:rgba(255,255,255,.06);border-top-color:var(--c-sand)}
 .section--dark .tile p{color:var(--c-sand)}
@@ -164,7 +174,7 @@ a{color:inherit}
 /* Témoignages */
 .quotes{display:grid;gap:1.5rem}
 @media (min-width:720px){.quotes{grid-template-columns:repeat(3,1fr)}}
-.quote{margin:0;padding:1.8rem;border:1px solid rgba(255,255,255,.3)}
+.quote{margin:0;padding:2rem;border:1px solid rgba(255,255,255,.3)}
 .quote p{font-style:italic;color:var(--c-sand)}
 .quote footer{font-size:.9rem;margin-top:1rem}
 
@@ -379,6 +389,9 @@ a{color:inherit}
 
 <body id="accueil">
 <a class="skip" href="#contenu">Aller au contenu</a>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <symbol id="moulure" viewBox="0 0 168 30"><path fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round" d="M2 26h38v-6h10c10 0 10-14 24-14h20c14 0 14 14 24 14h10v6h38"/><path fill="none" stroke="currentColor" stroke-width="1" stroke-linejoin="round" opacity=".55" d="M50 26v-3h8c8 0 9-10 18-10h16c9 0 10 10 18 10h8v3"/></symbol>
+</svg>
 
 <header class="header">
   <div class="wrap header__bar">
@@ -427,6 +440,7 @@ a{color:inherit}
   <section class="section section--dark" aria-labelledby="titre-chiffres">
     <div class="wrap">
       <h2 id="titre-chiffres" class="sr-only">DecoParis en chiffres</h2>
+      <svg class="ornament ornament--center" aria-hidden="true" focusable="false"><use href="#moulure"/></svg>
       <ul class="stats">
         <li><strong>2&#8239;000</strong><span>projets réalisés</span></li>
         <li><strong>8 ans</strong><span>d'expertise</span></li>
@@ -442,6 +456,7 @@ a{color:inherit}
       <div>
         <span class="kicker">Notre histoire</span>
         <h2 id="titre-identite">DecoParis, fabricant de modénatures et de moulures depuis 2017</h2>
+      <svg class="ornament" aria-hidden="true" focusable="false"><use href="#moulure"/></svg>
         <p>DecoParis est un fabricant français de modénatures de façade et de moulures intérieures. L'entreprise a été fondée en 2017. Elle fabrique ses profils sur mesure dans son usine de Creil, dans l'Oise, où se trouve aussi son showroom. Ses bureaux sont situés au Blanc-Mesnil, en Seine-Saint-Denis.</p>
         <p>DecoParis travaille pour les façadiers, les entreprises de rénovation et de gros œuvre, les promoteurs, les architectes, les designers d'intérieur et les particuliers. Elle livre ses modénatures et ses moulures sur chantier partout en France.</p>
         <p>Parmi ses références figurent Eiffage, Bouygues Bâtiment, Demathieu Bard et Legendre.</p>
@@ -461,6 +476,7 @@ a{color:inherit}
     <div class="wrap">
       <span class="kicker">Nos produits</span>
       <h2 id="titre-gammes">Trois gammes, un même savoir-faire</h2>
+      <svg class="ornament" aria-hidden="true" focusable="false"><use href="#moulure"/></svg>
       <p class="lead">Chaque profil est fabriqué sur mesure à Creil, d'après les plans ou le relevé du chantier.</p>
       <div class="grid-3">
         <article class="card">
@@ -508,16 +524,17 @@ a{color:inherit}
     <div class="wrap">
       <span class="kicker">Notre métier</span>
       <h2 id="titre-pour-qui">Pour qui fabriquons-nous ?</h2>
+      <svg class="ornament" aria-hidden="true" focusable="false"><use href="#moulure"/></svg>
       <div class="grid-3">
-        <div class="tile">
+        <div class="tile frame">
           <h3>Professionnels du bâtiment</h3>
           <p>Façadiers, entreprises de gros œuvre et de rénovation, promoteurs. Des profils sur mesure, conformes aux plans, livrés sur chantier dans les délais du planning.</p>
         </div>
-        <div class="tile">
+        <div class="tile frame">
           <h3>Architectes et designers</h3>
           <p>Architectes, maîtres d'œuvre et designers d'intérieur. Un accompagnement sur le dessin du profil, du relevé de l'existant à la création d'un décor neuf.</p>
         </div>
-        <div class="tile">
+        <div class="tile frame">
           <h3>Particuliers</h3>
           <p>Propriétaires d'une maison ou d'un appartement. Des moulures et des modénatures sur mesure pour restaurer ou embellir une façade et des pièces à vivre.</p>
         </div>
@@ -530,6 +547,7 @@ a{color:inherit}
     <div class="wrap">
       <span class="kicker">Notre méthode sur mesure</span>
       <h2 id="titre-methode">Du plan au chantier, en quatre étapes</h2>
+      <svg class="ornament" aria-hidden="true" focusable="false"><use href="#moulure"/></svg>
       <ol class="steps">
         <li>
           <h3>Étude des plans ou relevé</h3>
@@ -556,6 +574,7 @@ a{color:inherit}
     <div class="wrap">
       <span class="kicker">Nos références</span>
       <h2 id="titre-references">Ils nous font confiance</h2>
+      <svg class="ornament" aria-hidden="true" focusable="false"><use href="#moulure"/></svg>
       <ul class="logos" aria-label="Clients de référence">
         <li>Eiffage</li>
         <li>Bouygues Bâtiment</li>
@@ -611,16 +630,17 @@ a{color:inherit}
     <div class="wrap">
       <span class="kicker">Témoignages</span>
       <h2 id="titre-temoignages">Ce que disent nos clients</h2>
+      <svg class="ornament" aria-hidden="true" focusable="false"><use href="#moulure"/></svg>
       <div class="quotes">
-        <blockquote class="quote">
+        <blockquote class="quote frame">
           <p><span class="placeholder">[TÉMOIGNAGE CLIENT RÉEL À FOURNIR]</span></p>
           <footer><span class="placeholder">[nom, fonction, entreprise]</span></footer>
         </blockquote>
-        <blockquote class="quote">
+        <blockquote class="quote frame">
           <p><span class="placeholder">[TÉMOIGNAGE CLIENT RÉEL À FOURNIR]</span></p>
           <footer><span class="placeholder">[nom, fonction, entreprise]</span></footer>
         </blockquote>
-        <blockquote class="quote">
+        <blockquote class="quote frame">
           <p><span class="placeholder">[TÉMOIGNAGE CLIENT RÉEL À FOURNIR]</span></p>
           <footer><span class="placeholder">[nom, fonction, entreprise]</span></footer>
         </blockquote>
@@ -633,6 +653,7 @@ a{color:inherit}
     <div class="wrap">
       <span class="kicker">Demande de devis</span>
       <h2 id="titre-devis">Décrivez votre projet, nous vous répondons</h2>
+      <svg class="ornament" aria-hidden="true" focusable="false"><use href="#moulure"/></svg>
       <p class="lead">Transmettez vos plans ou vos photos et le métrage estimé. Nous étudions votre projet et vous proposons un profil adapté.</p>
       <form class="form" action="#devis" method="post" enctype="multipart/form-data" aria-labelledby="titre-devis">
         <div class="field">
@@ -699,6 +720,7 @@ a{color:inherit}
     <div class="wrap">
       <span class="kicker">Questions fréquentes</span>
       <h2 id="titre-faq">Vos questions sur les modénatures et les moulures</h2>
+      <svg class="ornament" aria-hidden="true" focusable="false"><use href="#moulure"/></svg>
       <div class="faq">
         <details>
           <summary>Quel fabricant de moulures de façade en Île-de-France ?</summary>
