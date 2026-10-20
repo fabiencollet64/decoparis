@@ -87,14 +87,14 @@ a{color:inherit}
 
 /* En-tête */
 .header{position:absolute;inset:0 0 auto 0;z-index:20;padding:1rem 0}
-.header__bar{display:flex;align-items:center;justify-content:space-between;gap:1rem}
+.header__bar{display:flex;align-items:center;justify-content:space-between;gap:1rem;min-height:88px;padding:.5rem 1rem .5rem 1.25rem;background:var(--c-white);border-radius:var(--radius);box-shadow:0 8px 28px rgba(0,0,0,.18)}
 .brand{display:inline-flex;align-items:center;gap:.7rem;text-decoration:none;color:var(--c-white)}
-.brand__badge{display:block;padding:6px 10px;background:var(--c-white);border-radius:3px}
-.brand__badge img{width:72px;height:56px;object-fit:contain}
-.nav-toggle{display:inline-flex;align-items:center;gap:.5rem;min-width:48px;min-height:48px;padding:.5rem .9rem;background:var(--c-white);color:var(--c-ink);border:0;border-radius:var(--radius);font:inherit;font-weight:600;text-transform:uppercase;letter-spacing:.14em;font-size:.78rem;cursor:pointer}
+.brand__badge{display:block}
+.brand__badge img{width:80px;height:63px;object-fit:contain}
+.nav-toggle{display:inline-flex;align-items:center;gap:.5rem;min-width:48px;min-height:48px;padding:.5rem .9rem;background:var(--c-cream);color:var(--c-ink);border:0;border-radius:var(--radius);font:inherit;font-weight:600;text-transform:uppercase;letter-spacing:.14em;font-size:.78rem;cursor:pointer}
 .nav{display:none}
 .nav[data-open="true"]{display:block}
-.nav__list{list-style:none;margin:0;padding:.5rem 0;background:var(--c-white);border-radius:var(--radius);box-shadow:0 10px 30px rgba(0,0,0,.25)}
+.nav__list{list-style:none;margin:0;padding:.5rem 0;background:var(--c-white);border-top:1px solid #e6dfd7}
 .nav__list a{display:block;padding:.85rem 1.25rem;text-decoration:none;color:var(--c-ink);text-transform:uppercase;letter-spacing:.14em;font-size:.8rem;font-weight:600;white-space:nowrap}
 .nav__list .nav__cta a{color:var(--c-white)}
 .nav__list a:hover,.nav__list a:focus-visible{background:var(--c-cream)}
@@ -107,17 +107,17 @@ a{color:inherit}
 @media (min-width:900px){
   .nav-toggle{display:none}
   .nav{display:block}
-  .nav__list{display:flex;align-items:center;padding:0 .25rem;box-shadow:none}
-  .nav__list a{padding:.9rem 1rem}
-  .nav__cta{margin:0 .25rem 0 .5rem}
-  .nav__cta .btn{padding:.7rem 1.2rem;min-height:40px}
+  .nav__list{display:flex;align-items:center;padding:0;border-top:0}
+  .nav__list a{padding:1.1rem 1rem;font-size:.84rem}
+  .nav__cta{margin:0 0 0 .5rem}
+  .nav__cta .btn{padding:.95rem 1.5rem;min-height:52px}
 }
 
 /* Hero */
 .hero{position:relative;min-height:min(92svh,760px);display:flex;align-items:flex-end;color:var(--c-white);background:#6f6c6a;isolation:isolate}
 .hero__media{position:absolute;inset:0;z-index:-2}
 .hero__media img{width:100%;height:100%;object-fit:cover}
-.hero__content{padding:9rem 0 4rem;max-width:760px;text-shadow:0 1px 2px rgba(0,0,0,.6),0 2px 18px rgba(0,0,0,.5)}
+.hero__content{padding:10rem 0 4rem;max-width:760px;text-shadow:0 1px 2px rgba(0,0,0,.6),0 2px 18px rgba(0,0,0,.5)}
 .hero__actions .btn{text-shadow:none}
 .hero__tagline{font-style:italic;font-weight:400;font-size:1.1rem;letter-spacing:.06em;margin-bottom:1rem;color:var(--c-white)}
 .hero__actions{display:flex;flex-wrap:wrap;gap:.8rem;margin-top:1.8rem}
@@ -396,7 +396,7 @@ a{color:inherit}
 <header class="header">
   <div class="wrap header__bar">
     <a class="brand" href="#accueil">
-      <span class="brand__badge"><img src="images/logo-decoparis-header.png" width="72" height="56" alt="DecoParis" decoding="async"></span><span class="sr-only">Retour en haut de page</span>
+      <span class="brand__badge"><img src="images/logo-decoparis-header.png" width="80" height="63" alt="DecoParis" decoding="async"></span><span class="sr-only">Retour en haut de page</span>
     </a>
     <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="menu-principal" id="nav-toggle">Menu</button>
     <nav class="nav" id="menu-principal" aria-label="Navigation principale">
