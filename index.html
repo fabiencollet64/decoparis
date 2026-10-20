@@ -21,35 +21,29 @@
 <meta property="og:image:alt" content="Façade d'immeuble ancien avec modénatures DecoParis">
 <meta name="twitter:card" content="summary_large_image">
 
-<!-- Police du titre uniquement (fichier variable Jost, graisses 400 et 600, sous-ensemble latin) -->
-<link rel="preload" href="fonts/jost-latin.woff2" as="font" type="font/woff2" crossorigin>
+<!-- Préchargement de la police du titre uniquement (Poppins 600, sous-ensemble latin) -->
+<link rel="preload" href="fonts/poppins-600-latin.woff2" as="font" type="font/woff2" crossorigin>
 <!-- Image du hero préchargée : version mobile recadrée, version large pour écran -->
 <link rel="preload" as="image" type="image/avif" media="(max-width: 767px)" imagesrcset="images/hero-facade-mobile-480.avif 480w, images/hero-facade-mobile-800.avif 800w" imagesizes="100vw" fetchpriority="high">
 <link rel="preload" as="image" type="image/avif" media="(min-width: 768px)" imagesrcset="images/hero-facade-960.avif 960w, images/hero-facade-1600.avif 1600w" imagesizes="100vw" fetchpriority="high">
 
 <style>
-/* Palette relevée d'après l'ambiance du site actuel (brun chaud, taupe, blanc cassé).
-   [COULEURS ET POLICE À CONFIRMER] avec les variables --e-global-color-* d'Elementor et les Google Fonts du site. */
+/* Palette relevée sur le site actuel : brun du logo #55443f, beige des boutons #f0e9e0, texte noir, fond blanc.
+   Police Poppins (identifiée visuellement sur le site). [À CONFIRMER] avec les variables --e-global-color-* d'Elementor. */
 :root{
   --c-ink:#2b2420;      /* brun profond : textes, fonds sombres */
   --c-bark:#4a3b32;     /* brun chaud : voile des photos */
-  --c-taupe:#6b5a4e;    /* taupe : accents, bordures */
+  --c-taupe:#55443f;    /* brun du logo : accents, bordures */
   --c-sand:#c9b8a8;     /* sable : filets, textes secondaires sur fond sombre */
-  --c-cream:#f5f1ec;    /* blanc cassé : fonds clairs */
+  --c-cream:#f0e9e0;    /* beige des boutons du site : fonds clairs */
   --c-white:#ffffff;
   --c-muted:#5a4f47;    /* texte secondaire sur fond clair (contraste AA) */
-  --font:"Jost","Futura","Century Gothic","Segoe UI",Arial,sans-serif;
+  --font:"Poppins","Segoe UI",Arial,sans-serif;
   --wrap:1180px;
   --radius:4px;
 }
-@font-face{
-  font-family:"Jost";
-  font-style:normal;
-  font-weight:100 900;
-  font-display:swap;
-  src:url(fonts/jost-latin.woff2) format("woff2");
-  unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
-}
+@font-face{font-family:"Poppins";font-style:normal;font-weight:400;font-display:swap;src:url(fonts/poppins-400-latin.woff2) format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:"Poppins";font-style:normal;font-weight:600;font-display:swap;src:url(fonts/poppins-600-latin.woff2) format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
 *,*::before,*::after{box-sizing:border-box}
 html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
@@ -58,7 +52,7 @@ img,picture,svg{display:block;max-width:100%}
 img{height:auto;object-fit:cover}
 h1,h2,h3{font-weight:600;line-height:1.15;margin:0 0 .6em;letter-spacing:.01em}
 h1{font-size:clamp(1.75rem,2.2vw + 1rem,3rem)}
-h2{font-size:clamp(1.5rem,1.4vw + 1rem,2.25rem)}
+h2{font-size:clamp(1.35rem,1.2vw + .9rem,2rem);font-weight:400;text-transform:uppercase;letter-spacing:.04em}
 h3{font-size:1.2rem}
 p{margin:0 0 1em}
 a{color:inherit}
@@ -85,8 +79,8 @@ a{color:inherit}
 .header{position:absolute;inset:0 0 auto 0;z-index:20;padding:1rem 0;background:linear-gradient(rgba(25,18,14,.6),rgba(25,18,14,0))}
 .header__bar{display:flex;align-items:center;justify-content:space-between;gap:1rem}
 .brand{display:inline-flex;align-items:center;gap:.7rem;text-decoration:none;color:var(--c-white)}
-.brand__mono{display:grid;place-items:center;width:46px;height:46px;background:var(--c-white);color:var(--c-ink);font-weight:600;font-size:1.25rem;letter-spacing:-.04em;border-radius:3px}
-.brand__name{font-weight:600;letter-spacing:.24em;text-transform:uppercase;font-size:.95rem;text-shadow:0 1px 6px rgba(0,0,0,.5)}
+.brand__badge{display:block;padding:6px 10px;background:var(--c-white);border-radius:3px}
+.brand__badge img{width:72px;height:56px;object-fit:contain}
 .nav-toggle{display:inline-flex;align-items:center;gap:.5rem;min-width:48px;min-height:48px;padding:.5rem .9rem;background:var(--c-white);color:var(--c-ink);border:0;border-radius:var(--radius);font:inherit;font-weight:600;text-transform:uppercase;letter-spacing:.14em;font-size:.78rem;cursor:pointer}
 .nav{display:none}
 .nav[data-open="true"]{display:block}
@@ -143,11 +137,11 @@ a{color:inherit}
 .grid-3{display:grid;gap:1.5rem}
 @media (min-width:720px){.grid-3{grid-template-columns:repeat(3,1fr)}}
 .card{display:flex;flex-direction:column;background:var(--c-white);border:1px solid #e6dfd7}
-.card img{width:100%;aspect-ratio:4/3}
+.card img{width:100%;aspect-ratio:4/3;border-bottom:1px solid #eee6dc}
 .card__body{padding:1.4rem 1.5rem 1.6rem;display:flex;flex-direction:column;flex:1}
 .card__body p{color:var(--c-muted);flex:1}
-.card__link{font-weight:600;text-transform:uppercase;letter-spacing:.14em;font-size:.78rem;text-decoration:none;border-bottom:1px solid var(--c-taupe);align-self:flex-start;padding:.6rem 0}
-.card__link:hover,.card__link:focus-visible{border-bottom-width:2px}
+.card__link{display:block;text-align:center;font-weight:600;text-transform:uppercase;letter-spacing:.14em;font-size:.78rem;text-decoration:none;background:var(--c-cream);color:var(--c-ink);padding:.9rem 1rem;min-height:48px;border-radius:var(--radius)}
+.card__link:hover,.card__link:focus-visible{background:#e4d9cb}
 .tile{padding:1.8rem;border-top:2px solid var(--c-taupe);background:var(--c-cream)}
 .tile p{color:var(--c-muted);margin:0}
 .section--dark .tile{background:rgba(255,255,255,.06);border-top-color:var(--c-sand)}
@@ -201,7 +195,7 @@ a{color:inherit}
 .footer__grid{display:grid;gap:2.5rem}
 @media (min-width:760px){.footer__grid{grid-template-columns:repeat(2,1fr)}}
 @media (min-width:1000px){.footer__grid{grid-template-columns:1.3fr 1fr 1fr 1fr}}
-.footer h2{font-size:.8rem;text-transform:uppercase;letter-spacing:.2em;color:var(--c-sand);margin-bottom:1rem}
+.footer h2{font-size:.8rem;font-weight:600;letter-spacing:.2em;color:var(--c-sand);margin-bottom:1rem}
 .footer address{font-style:normal;line-height:1.7}
 .footer ul{list-style:none;margin:0;padding:0}
 .footer li{padding:.3rem 0}
@@ -389,8 +383,7 @@ a{color:inherit}
 <header class="header">
   <div class="wrap header__bar">
     <a class="brand" href="#accueil">
-      <span class="brand__mono" aria-hidden="true">DP</span>
-      <span class="brand__name">DecoParis</span><span class="sr-only">, retour en haut de page</span>
+      <span class="brand__badge"><img src="images/logo-decoparis-header.png" width="72" height="56" alt="DecoParis" decoding="async"></span><span class="sr-only">Retour en haut de page</span>
     </a>
     <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="menu-principal" id="nav-toggle">Menu</button>
     <nav class="nav" id="menu-principal" aria-label="Navigation principale">
@@ -474,7 +467,7 @@ a{color:inherit}
           <picture>
             <source type="image/avif" srcset="images/gamme-modenature-480.avif 480w, images/gamme-modenature-960.avif 960w" sizes="(min-width: 720px) 33vw, 100vw">
             <source type="image/webp" srcset="images/gamme-modenature-480.webp 480w, images/gamme-modenature-960.webp 960w" sizes="(min-width: 720px) 33vw, 100vw">
-            <img src="images/gamme-modenature-960.jpg" srcset="images/gamme-modenature-480.jpg 480w, images/gamme-modenature-960.jpg 960w" sizes="(min-width: 720px) 33vw, 100vw" width="960" height="720" alt="Corniche et bandeau de façade en modénature Decoprofil posés sur un immeuble ancien" loading="lazy" decoding="async">
+            <img src="images/gamme-modenature-960.jpg" srcset="images/gamme-modenature-480.jpg 480w, images/gamme-modenature-960.jpg 960w" sizes="(min-width: 720px) 33vw, 100vw" width="960" height="720" alt="Dessin d'un profil de corniche de façade à denticules de la gamme Decoprofil Modénature" loading="lazy" decoding="async">
           </picture>
           <div class="card__body">
             <h3>Decoprofil Modénature</h3>
@@ -486,7 +479,7 @@ a{color:inherit}
           <picture>
             <source type="image/avif" srcset="images/gamme-coffrage-480.avif 480w, images/gamme-coffrage-960.avif 960w" sizes="(min-width: 720px) 33vw, 100vw">
             <source type="image/webp" srcset="images/gamme-coffrage-480.webp 480w, images/gamme-coffrage-960.webp 960w" sizes="(min-width: 720px) 33vw, 100vw">
-            <img src="images/gamme-coffrage-960.jpg" srcset="images/gamme-coffrage-480.jpg 480w, images/gamme-coffrage-960.jpg 960w" sizes="(min-width: 720px) 33vw, 100vw" width="960" height="720" alt="Profil de coffrage Decoprofil préparé pour un décor de façade" loading="lazy" decoding="async">
+            <img src="images/gamme-coffrage-960.jpg" srcset="images/gamme-coffrage-480.jpg 480w, images/gamme-coffrage-960.jpg 960w" sizes="(min-width: 720px) 33vw, 100vw" width="960" height="720" alt="Dessin d'un profil de coffrage à moulure de la gamme Decoprofil Coffrage" loading="lazy" decoding="async">
           </picture>
           <div class="card__body">
             <h3>Decoprofil Coffrage</h3>
@@ -498,7 +491,7 @@ a{color:inherit}
           <picture>
             <source type="image/avif" srcset="images/gamme-interieur-480.avif 480w, images/gamme-interieur-960.avif 960w" sizes="(min-width: 720px) 33vw, 100vw">
             <source type="image/webp" srcset="images/gamme-interieur-480.webp 480w, images/gamme-interieur-960.webp 960w" sizes="(min-width: 720px) 33vw, 100vw">
-            <img src="images/gamme-interieur-960.jpg" srcset="images/gamme-interieur-480.jpg 480w, images/gamme-interieur-960.jpg 960w" sizes="(min-width: 720px) 33vw, 100vw" width="960" height="720" alt="Salon haussmannien avec corniche et cimaise Moulurama Intérieur" loading="lazy" decoding="async">
+            <img src="images/gamme-interieur-960.jpg" srcset="images/gamme-interieur-480.jpg 480w, images/gamme-interieur-960.jpg 960w" sizes="(min-width: 720px) 33vw, 100vw" width="960" height="720" alt="Dessin d'une corniche de plafond à gorge de la gamme Moulurama Intérieur" loading="lazy" decoding="async">
           </picture>
           <div class="card__body">
             <h3>Moulurama Intérieur</h3>

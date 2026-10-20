@@ -17,9 +17,10 @@ mkdirSync(outDir, { recursive: true });
 const SPECS = [
   { name: 'hero-facade', ratio: 16 / 10, widths: [960, 1600], label: 'Photo du hero (facade haussmannienne) a inserer', hue: 'warm' },
   { name: 'hero-facade-mobile', ratio: 3 / 4, widths: [480, 800], label: 'Photo du hero, recadrage mobile', hue: 'warm' },
-  { name: 'gamme-modenature', ratio: 4 / 3, widths: [480, 960], label: 'Visuel Decoprofil Modenature a inserer', hue: 'stone' },
-  { name: 'gamme-coffrage', ratio: 4 / 3, widths: [480, 960], label: 'Visuel Decoprofil Coffrage a inserer', hue: 'taupe' },
-  { name: 'gamme-interieur', ratio: 4 / 3, widths: [480, 960], label: 'Visuel Moulurama Interieur a inserer', hue: 'cream' },
+  // Dessins de profils sur fond blanc (site actuel) : on les inscrit dans le cadre sans recadrer.
+  { name: 'gamme-modenature', ratio: 4 / 3, widths: [480, 960], label: 'Visuel Decoprofil Modenature a inserer', hue: 'stone', fit: 'contain' },
+  { name: 'gamme-coffrage', ratio: 4 / 3, widths: [480, 960], label: 'Visuel Decoprofil Coffrage a inserer', hue: 'taupe', fit: 'contain' },
+  { name: 'gamme-interieur', ratio: 4 / 3, widths: [480, 960], label: 'Visuel Moulurama Interieur a inserer', hue: 'cream', fit: 'contain' },
   { name: 'chantier-1', ratio: 4 / 3, widths: [480, 960], label: 'Photo chantier 1 a inserer', hue: 'warm' },
   { name: 'chantier-2', ratio: 4 / 3, widths: [480, 960], label: 'Photo chantier 2 a inserer', hue: 'stone' },
   { name: 'chantier-3', ratio: 4 / 3, widths: [480, 960], label: 'Photo chantier 3 a inserer', hue: 'taupe' },
@@ -63,7 +64,9 @@ for (const spec of SPECS) {
     const h = Math.round(w / spec.ratio);
     let img;
     if (src) {
-      img = sharp(src).resize(w, h, { fit: 'cover', position: 'attention' });
+      img = spec.fit === 'contain'
+        ? sharp(src).flatten({ background: '#ffffff' }).resize(w, h, { fit: 'contain', background: '#ffffff', kernel: 'lanczos3' })
+        : sharp(src).resize(w, h, { fit: 'cover', position: 'attention' });
     } else {
       img = sharp(Buffer.from(placeholderSvg(w, h, spec.label, spec.hue)));
     }
@@ -76,6 +79,9 @@ for (const spec of SPECS) {
   }
 }
 
-// Logo raster pour les donnees structurees et Open Graph.
-await sharp(resolve(outDir, 'logo-decoparis.svg')).resize(512, 512).png({ compressionLevel: 9 }).toFile(resolve(outDir, 'logo-decoparis-512.png'));
-console.log('logo-decoparis-512.png');
+// Logo : images/src/logo.png (logo officiel) sinon le monogramme SVG de substitution.
+// Sorties : logo-decoparis-512.png (donnees structurees) et logo-decoparis-header.png (en-tete, 2x).
+const logoSrc = ['png', 'jpg', 'svg'].map((e) => resolve(srcDir, `logo.${e}`)).find((p) => existsSync(p)) || resolve(outDir, 'logo-decoparis.svg');
+await sharp(logoSrc).flatten({ background: '#ffffff' }).resize(512, 512, { fit: 'contain', background: '#ffffff' }).png({ compressionLevel: 9, palette: true }).toFile(resolve(outDir, 'logo-decoparis-512.png'));
+await sharp(logoSrc).flatten({ background: '#ffffff' }).resize({ height: 112, kernel: 'lanczos3' }).png({ compressionLevel: 9, palette: true }).toFile(resolve(outDir, 'logo-decoparis-header.png'));
+console.log('logo-decoparis-512.png, logo-decoparis-header.png');
